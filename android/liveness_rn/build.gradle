@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core:1.6.0' }
+        }
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+
+}
+repositories {
+    flatDir {
+        dirs project(':liveness').file('libs')
+    }
+}
+dependencies {
+    api "com.facebook.react:react-native:+"
+    api project(":liveness")
+}
